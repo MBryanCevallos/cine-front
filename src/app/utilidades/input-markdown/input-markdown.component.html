@@ -1,0 +1,13 @@
+<!--/control de tabs = pestañas-->
+<mat-tab-group>
+    <mat-tab label="Editar">
+        <mat-form-field appearance="fill" (change)="changeMarkdown.emit($event.target.value)">
+            <mat-label>{{placeholderTextarea}}</mat-label>
+            <!--<textarea (input)="inputTextArea($event.target.value)" matInput></textarea>--> <!--banding de una via-->
+            <textarea [(ngModel)]="contenidoMarkDown" matInput></textarea> <!--banding de doble via-->
+        </mat-form-field>
+    </mat-tab>
+    <mat-tab  label="Preview"> 
+        <markdown [data]="contenidoMarkDown" ngPreserveWhitespace></markdown>
+    </mat-tab>
+</mat-tab-group>

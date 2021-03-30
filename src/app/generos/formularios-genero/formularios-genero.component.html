@@ -1,0 +1,19 @@
+<form (submit)="guardarCambios()" [formGroup]="form"> <!--asociamos al formGroup de la clase // submit es postear - cuando el usuario presiona enviar este envia los datos al web a pi para guardarlos en BDD-->
+    <mat-form-field appearance="outline">
+        <mat-label>
+            Nombre*
+        </mat-label>
+            <input formControlName="nombre" matInput> <!--nombre es el valor que esta en la clase "ts"-->
+            <mat-error *ngIf="form.invalid">
+                {{obtenerErrorCampoNombre()}}
+            </mat-error>
+    </mat-form-field>
+    <div>
+        <button mat-flat-button color="primary" [disabled]="form.invalid"><!--validacion-->
+            Guardar Cambios
+        </button>
+        <a mat-stroked-button routerLink="/generos">
+            Cancelar
+        </a>
+    </div>
+    </form>

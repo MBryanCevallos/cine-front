@@ -1,0 +1,74 @@
+
+<!--<h2>OJO  datos de la pelicula</h2>-->
+<!--<div>
+    {{pelicula.titulo | uppercase}}
+</div>
+<div>
+    {{pelicula.fechaLanzamiento | date:"dd-MMMM-yyyy" | uppercase}}
+</div>
+<div>
+    {{pelicula.precio | currency }}
+</div>-->
+
+
+<!--<h2>OJO Arreglo de datos de las peliculas</h2>-->
+
+<!--<div *ngFor="let pelicula of peliculas; let index = index" class="pelicula-contenedor">
+<div>
+    Pelicula {{index}}: {{pelicula.titulo}}
+</div>
+<div>
+    {{pelicula.fechaLanzamiento | date:"dd-MMMM-yyyy" | uppercase}}
+</div>
+<div>
+    {{pelicula.precio | currency }}
+</div>
+</div>-->
+
+<!--<h2> Arreglo de datos de las peliculas con TIMEOUT</h2>
+<div *ngIf ="!pelis">
+    <img src="https://media.tenor.com/images/965beb93fefb499a174d45bfcef23c30/tenor.gif"> 
+</div>
+<div *ngIf="pelis?.length === 0">
+    <p>No hay peliculas para mostrar</p>
+</div>
+
+<ng-container *ngIf="pelis && pelis.length > 0">-->
+<app-listado-generico [listado]="pelis">
+    <ng-container vacio>
+        <div>Mensaje personalizado <b>Vacío</b></div>
+    </ng-container>
+<ng-container contenido>
+<div class="peliculas-contenedor">
+    <div *ngFor="let peli of pelis; let index = index" class="pelicula-contenedor">
+<a>
+    <img [src]="peli.poster" alt="Poster"/>
+</a>
+<p>
+    <a>
+        {{peli.titulo}}
+    </a>
+</p>
+<div>
+    <a mat-flat-button color="primary">
+        Editar
+    </a>
+    <button mat-flat-button color="warn" type="button">
+        Borrar
+    </button>
+</div>
+
+<!--<div>
+   <h2> Pelicula {{index}}: {{peli.titulo}}
+    <button (click)="remover(index)">remover</button></h2>
+</div>
+<div>
+    {{peli.fechaLanzamiento | date:"dd-MMMM-yyyy" | uppercase}}
+</div>
+<div>
+    {{peli.precio | currency }}
+</div>-->
+</div>
+</div>
+</ng-container>
+</app-listado-generico>
