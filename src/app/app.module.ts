@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 import { LeafletModule } from '@asymmetrik/ngx-leaflet'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -77,9 +79,9 @@ import { AutocompleteActoresComponent } from './actores/autocomplete-actores/aut
     ReactiveFormsModule, // importamos para usar formularios reactivos.
     FormsModule,
     LeafletModule,
-    MarkdownModule.forRoot() // markdown
-    
-  ],
+    MarkdownModule.forRoot(), // markdown
+    HttpClientModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
