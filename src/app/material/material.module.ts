@@ -10,10 +10,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker'; // calendario
 import {MatNativeDateModule} from '@angular/material/core'; // importar para usar el calendario picker
-import {MatTabsModule} from '@angular/material/tabs' // para uso de de markdown
+import {MatTabsModule} from '@angular/material/tabs'; // para uso de de markdown
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; // autocomplete
-import {MatTableModule} from '@angular/material/table' // tabla
-import {DragDropModule} from '@angular/cdk/drag-drop' //arrastrar autor
+import {MatTableModule} from '@angular/material/table';  // tabla
+import {DragDropModule} from '@angular/cdk/drag-drop'; // arrastrar autor
+import {MatPaginatorModule} from '@angular/material/paginator'; // paginacion
 @NgModule({
   declarations: [],
   exports: [
@@ -29,7 +30,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop' //arrastrar autor
     MatTabsModule,
     MatAutocompleteModule,
     MatTableModule,
-    DragDropModule
+    DragDropModule,
+    MatPaginatorModule
   ],
   imports: [
     CommonModule
