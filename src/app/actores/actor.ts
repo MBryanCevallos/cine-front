@@ -4,8 +4,9 @@ export interface actorDTO{
     foto: string;
 }
 
-export interface actorCreacionDTO{
+export interface actorCreacionDTO {
     nombre: string;
     fechaNacimiento: Date;
     foto: File;
+    biografia: string;
 }

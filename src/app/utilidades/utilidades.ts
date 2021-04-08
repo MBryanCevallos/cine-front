@@ -4,7 +4,7 @@ export function toBase64(file: File){
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
         reader.onerror = (error) => reject(error);
-    })
+    });
 }
 
 export function parsearErroresAPI(response: any): string[]{
@@ -22,9 +22,23 @@ export function parsearErroresAPI(response: any): string[]{
                 arreglo[1].forEach(mensajeError => {
                     resultado.push(`${campo}: ${mensajeError}`);
                 });
-            })
+            });
         }
     }
 
     return resultado;
+}
+export function formatearFecha(date: Date){
+    const formato = new Intl.DateTimeFormat('en', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+    const [
+        {value: month}, ,
+        {value: day}, ,
+        {value: year}
+    ] = formato.formatToParts(date);
+
+    return `${year}-${month}-${day}`;
 }
