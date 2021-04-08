@@ -9,8 +9,8 @@ export function toBase64(file: File){
 
 export function parsearErroresAPI(response: any): string[]{
     const resultado: string[] = [];
-    if(response.error){
-        if(typeof response.error === 'string')
+    if (response.error){
+        if (typeof response.error === 'string')
         {
             resultado.push(response.error);
         }
