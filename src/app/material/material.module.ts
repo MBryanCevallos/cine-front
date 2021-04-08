@@ -15,6 +15,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete'; // autocom
 import {MatTableModule} from '@angular/material/table';  // tabla
 import {DragDropModule} from '@angular/cdk/drag-drop'; // arrastrar autor
 import {MatPaginatorModule} from '@angular/material/paginator'; // paginacion
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [],
   exports: [
@@ -31,7 +32,8 @@ import {MatPaginatorModule} from '@angular/material/paginator'; // paginacion
     MatAutocompleteModule,
     MatTableModule,
     DragDropModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   imports: [
     CommonModule

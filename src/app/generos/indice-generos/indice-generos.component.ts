@@ -25,8 +25,8 @@ export class IndiceGenerosComponent implements OnInit{
     // .subscribe(generos => { // nos subcribimos al observable
     .subscribe((respuesta: HttpResponse<generoDTO[]>) => {
        this.generos = respuesta.body;
-       console.log(respuesta.headers.get("cantidadTotalRegistros"));
-       this.cantidadTotalRegistros = respuesta.headers.get("cantidadTotalRegistros");
+       console.log(respuesta.headers.get('cantidadTotalRegistros'));
+       this.cantidadTotalRegistros = respuesta.headers.get('cantidadTotalRegistros');
      }, error => console.error(error)); // buena practica retornar error si el web api da error
   }
   actualizarPaginacion(datos: PageEvent){

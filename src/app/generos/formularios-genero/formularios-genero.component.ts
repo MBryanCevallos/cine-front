@@ -38,13 +38,13 @@ export class FormulariosGeneroComponent implements OnInit {
   }
   obtenerErrorCampoNombre(){
     var campo = this.form.get('nombre');
-    if(campo.hasError('required')){
+    if (campo.hasError('required')){
       return 'El campo es requerido';
     }
-    if(campo.hasError('minlength')){
+    if (campo.hasError('minlength')){
       return 'La longitud mínima es de 3 caracteres';
     }
-    if(campo.hasError('primeraLetraMayuscula')){
+    if (campo.hasError('primeraLetraMayuscula')){
       return campo.getError('primeraLetraMayuscula').mensaje;  // estrae el mensaje de error desde la utiliadad creada.
     }
     return '';
