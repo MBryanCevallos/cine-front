@@ -10,7 +10,7 @@ import { ListadoGenericoComponent } from './utilidades/listado-generico/listado-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // para usar formularios reactivos
-import "leaflet/dist/images/marker-shadow.png"; // error en mapa 404 no responde 
+import "leaflet/dist/images/marker-shadow.png"; // error en mapa 404 no responde
 
 import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './menu/menu.component';

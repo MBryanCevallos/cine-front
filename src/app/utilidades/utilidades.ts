@@ -29,6 +29,7 @@ export function parsearErroresAPI(response: any): string[]{
     return resultado;
 }
 export function formatearFecha(date: Date){
+    date = new Date(date); // convertimos a un estandar de fecha
     const formato = new Intl.DateTimeFormat('en', {
         year: 'numeric',
         month: '2-digit',

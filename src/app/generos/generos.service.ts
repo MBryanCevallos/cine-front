@@ -29,7 +29,7 @@ export class GenerosService {
     return this.http.post(this.apiUrl, genero);
   }
 
-  public ediar(id: number, genero: generoCreacionDTO){
+  public editar(id: number, genero: generoCreacionDTO){
     return this.http.put(`${this.apiUrl}/${id}`, genero);
   }
 

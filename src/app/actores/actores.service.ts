@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { formatearFecha } from '../utilidades/utilidades';
-import { actorCreacionDTO } from './actor';
+import { actorCreacionDTO, actorDTO } from './actor';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,25 @@ export class ActoresService {
   constructor(private http: HttpClient) { }
   private apiUrl = environment.apiUrl + 'actores';
 
+  public obtenerTodos(pagina: number, cantidadRegistrosAMostrar: number):
+  Observable<any>{// retorna un observable por eso lo  añadimos y debemos suscribirnos al observable
+    let params = new HttpParams();
+    params = params.append('pagina', pagina.toString());
+    params = params.append('recordsPorPagina', cantidadRegistrosAMostrar.toString()); // recordsPorPagina lo trae del back end
+    return this.http.get<actorDTO[]>(this.apiUrl, {observe: 'response', params}); // obtener la informacion de la cabecera observe
+  }
+
+  public obtenerPorId(id: number): Observable<actorDTO>{
+    return this.http.get<actorDTO>(`${this.apiUrl}/${id}`);
+  }
+
   public crear(actor: actorCreacionDTO){
     const formData = this.construirFormData(actor);
     return this.http.post(this.apiUrl, formData); // ya no pasamos actor sino formData
+  }
+  public editar(id: number, actor: actorCreacionDTO){
+    const formData = this.construirFormData(actor);
+    return this.http.put(`${this.apiUrl}/${id}`, formData);
   }
 
   private construirFormData(actor: actorCreacionDTO): FormData {
@@ -30,5 +47,8 @@ export class ActoresService {
       formData.append('foto', actor.foto);
     }
     return formData;
+  }
+  public borrar(id: number){
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

@@ -26,7 +26,7 @@ export class EditarGeneroComponent implements OnInit {
     });
   }
     guardarCambios(genero: generoCreacionDTO){ // guardar cambios se va a comunicar con la web api
-    this.generosServices.ediar(this.modelo.id, genero)
+    this.generosServices.editar(this.modelo.id, genero)
     .subscribe(() => {
       this.router.navigate(['/generos']);
    }, error => this.errores = parsearErroresAPI(error));
