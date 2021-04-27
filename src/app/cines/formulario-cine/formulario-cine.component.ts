@@ -14,6 +14,9 @@ export class FormularioCineComponent implements OnInit {
   form: FormGroup
 
   @Input()
+  errores: string[] = [];
+
+  @Input()
   modelo: cineCreacionDTO;
 
   @Output()
@@ -23,18 +26,17 @@ export class FormularioCineComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      nombre: ['',{
+      nombre: ['', {
         validators: [Validators.required],
       },],
-      latitud: ['',{
-          validators:[Validators.required]
+      latitud: ['', {
+          validators: [Validators.required]
         }
       ],
-      longitud: ['',{
-        validators:[Validators.required]
+      longitud: ['', {
+        validators: [Validators.required]
       }
     ]
-    
     });
 
     if(this.modelo !== undefined){

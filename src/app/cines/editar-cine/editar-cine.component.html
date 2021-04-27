@@ -1,4 +1,8 @@
 <p>editar-cine works!</p>
 <app-formulario-cine 
+*ngIf="modelo"
 [modelo]="modelo"
+[errores]="errores"
 (guardarCambios)="guardarCambios($event)"></app-formulario-cine>
+
+<mat-spinner *ngIf="!modelo"></mat-spinner>
