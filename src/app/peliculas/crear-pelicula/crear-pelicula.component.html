@@ -1,5 +1,6 @@
 <h2>Crear Película</h2>
 <app-formulario-pelicula *ngIf="cinesNoSeleccionados"
+[errores]="errores"
 [generosNoSeleccionados]="generosNoSeleccionados"
 [cinesNoSeleccionados]="cinesNoSeleccionados" (OnSubmit)="guardarCambios($event)"></app-formulario-pelicula>
 

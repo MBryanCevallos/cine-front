@@ -1,8 +1,10 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatTable } from '@angular/material/table';
+import { actorPeliculaDTO } from '../actor';
+import { ActoresService } from '../actores.service';
 
 @Component({
   selector: 'app-autocomplete-actores',
@@ -11,27 +13,31 @@ import { MatTable } from '@angular/material/table';
 })
 export class AutocompleteActoresComponent implements OnInit {
 
-  constructor() { }
- 
-  control: FormControl = new FormControl; //formCotrol nos permite manejar un campo de un formulario de manera individual
+  constructor( private actoresService: ActoresService) { }
 
-  actores = [ //ng for
+  control: FormControl = new FormControl; // formCotrol nos permite manejar un campo de un formulario de manera individual
+
+  /*actores = [ //ng for
   {nombre: 'Tom Holland', personaje: '', foto: 'https://culturageek.com.ar/wp-content/uploads/2021/02/tomholland-scaled.jpg' },
   {nombre: 'Tom Hanks', personaje: '', foto: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Tom_Hanks_TIFF_2019.jpg' },
   {nombre: 'Samuel Jackson', personaje: '', foto: 'http://es.web.img2.acsta.net/pictures/15/07/27/12/24/354255.jpg' }
-  ];
+  ];*/
 
-  actoresOtiginal = this.actores;
-
-  actoresSeleccionados =[];
+  // actoresOtiginal = this.actores;
+  @Input()
+  actoresSeleccionados: actorPeliculaDTO[] = [];
+  actoresAMostrar: actorPeliculaDTO[] = [];
 
   columnasAMostrar = ['imagen', 'nombre', 'personaje', 'acciones'];
-  @ViewChild(MatTable) table: MatTable<any> //actualiza la tabla  de los datos del actos
+  @ViewChild(MatTable) table: MatTable<any>; // actualiza la tabla  de los datos del actos
 
   ngOnInit(): void {  // autocomplete
-    this.control.valueChanges.subscribe(valor => {
-      this.actores = this.actoresOtiginal;
-      this.actores = this.actores.filter(actor => actor.nombre.indexOf(valor) !== -1);
+    this.control.valueChanges.subscribe(nombre => {
+      if (typeof nombre === 'string' && nombre){
+     this.actoresService.ObtenerPorNombre(nombre).subscribe(actores => {
+       this.actoresAMostrar = actores;
+      });
+    }
     });
   }
   optionSelected(event: MatAutocompleteSelectedEvent){

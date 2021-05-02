@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { error } from 'selenium-webdriver';
 import { MultipleSelectorModel } from 'src/app/utilidades/selector-multiple/MultipleSelectorModel';
+import { parsearErroresAPI } from 'src/app/utilidades/utilidades';
 import { PeliculaCreacionDTO } from '../pelicula';
 import { PeliculasService } from '../peliculas.service';
 
@@ -11,6 +13,8 @@ import { PeliculasService } from '../peliculas.service';
 export class CrearPeliculaComponent implements OnInit {
 
   constructor(private peliculasService: PeliculasService) { }
+
+  errores: string[] = [];
   generosNoSeleccionados: MultipleSelectorModel[];
   cinesNoSeleccionados: MultipleSelectorModel[];
 
@@ -27,6 +31,7 @@ export class CrearPeliculaComponent implements OnInit {
     }, error => console.error(error));
   }
   guardarCambios(pelicula: PeliculaCreacionDTO) {
-    console.log(pelicula);
+    this.peliculasService.crear(pelicula)
+    .subscribe(() => console.log('existoso'), error => this.errores = parsearErroresAPI(error));
   }
 }
