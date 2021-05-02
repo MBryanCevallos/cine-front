@@ -39,7 +39,7 @@ export class FormularioCineComponent implements OnInit {
     ]
     });
 
-    if(this.modelo !== undefined){
+    if (this.modelo !== undefined){
       this.form.patchValue(this.modelo); // pasamo el modelo
       this.coordenadaInicial.push({latitud: this.modelo.latitud, longitud:this.modelo.longitud});
     }

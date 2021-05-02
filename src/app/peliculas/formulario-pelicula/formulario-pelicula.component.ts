@@ -19,20 +19,14 @@ export class FormularioPeliculaComponent implements OnInit {
   @Output()
   OnSubmit: EventEmitter<PeliculaCreacionDTO> = new EventEmitter<PeliculaCreacionDTO>();
 
-  generosNoseleccionados: MultipleSelectorModel[]= [
-    {llave: 1, valor: 'Drama'},
-    {llave: 2, valor: 'Acción'},
-    {llave: 3, valor: 'Comedia'}
-  ];
+  @Input()
+  generosNoSeleccionados: MultipleSelectorModel[];
 
-  generosSeleccionados: MultipleSelectorModel[]= [];
+  generosSeleccionados: MultipleSelectorModel[] = [];
+  @Input()
+  cinesNoSeleccionados: MultipleSelectorModel[];
 
-  cinesNoSeleccionados: MultipleSelectorModel[]= [
-    {llave: 1, valor: 'Sambil'},
-    {llave: 2, valor: 'Agora'},
-    {llave: 3, valor: 'Accrópolis'}
-  ];
-  cinesSeleccionados: MultipleSelectorModel[]= [];
+  cinesSeleccionados: MultipleSelectorModel[] = [];
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
