@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PeliculaDTO } from '../pelicula';
 
 @Component({
   selector: 'app-listado-peliculas',
@@ -9,7 +10,7 @@ export class ListadoPeliculasComponent implements OnInit {
 
   constructor() { }
   @Input()
-  pelis;
+  peliculas: PeliculaDTO[];
   ngOnInit(): void {
    /* this.pelis =[{
       titulo: 'Spider-Man- from home / cine',
@@ -42,6 +43,6 @@ export class ListadoPeliculasComponent implements OnInit {
   }];
 */
 remover(indicePelicula: number): void{
-  this.pelis.splice(indicePelicula, 1);
+  this.peliculas.splice(indicePelicula, 1);
 }
 }

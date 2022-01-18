@@ -1,5 +1,5 @@
 export function toBase64(file: File){
-    return new Promise((resolve, reject)=> {
+    return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
@@ -18,7 +18,7 @@ export function parsearErroresAPI(response: any): string[]{
             const mapaErrores = response.error.errors;
             const entradas = Object.entries(mapaErrores);
             entradas.forEach((arreglo: any[]) => {
-                const campo =arreglo[0];
+                const campo = arreglo[0];
                 arreglo[1].forEach(mensajeError => {
                     resultado.push(`${campo}: ${mensajeError}`);
                 });

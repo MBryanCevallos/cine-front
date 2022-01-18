@@ -34,23 +34,21 @@
 </div>
 
 <ng-container *ngIf="pelis && pelis.length > 0">-->
-<app-listado-generico [listado]="pelis">
-    <ng-container vacio>
-        <div>Mensaje personalizado <b>Vacío</b></div>
-    </ng-container>
+<app-listado-generico [listado]="peliculas">
+    
 <ng-container contenido>
 <div class="peliculas-contenedor">
-    <div *ngFor="let peli of pelis; let index = index" class="pelicula-contenedor">
-<a>
-    <img [src]="peli.poster" alt="Poster"/>
+    <div *ngFor="let pelicula of peliculas; let index = index" class="pelicula-contenedor">
+    <a>
+    <img [src]="pelicula.poster" alt="Poster"/>
 </a>
 <p>
     <a>
-        {{peli.titulo}}
+        {{pelicula.titulo}}
     </a>
 </p>
 <div>
-    <a mat-flat-button color="primary">
+    <a mat-flat-button color="primary" [routerLink]="'/peliculas/editar/'+ pelicula.id">
         Editar
     </a>
     <button mat-flat-button color="warn" type="button">
@@ -63,6 +61,7 @@
     <button (click)="remover(index)">remover</button></h2>
 </div>
 <div>
+    
     {{peli.fechaLanzamiento | date:"dd-MMMM-yyyy" | uppercase}}
 </div>
 <div>

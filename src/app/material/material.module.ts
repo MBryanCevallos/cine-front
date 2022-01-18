@@ -16,6 +16,8 @@ import {MatTableModule} from '@angular/material/table';  // tabla
 import {DragDropModule} from '@angular/cdk/drag-drop'; // arrastrar autor
 import {MatPaginatorModule} from '@angular/material/paginator'; // paginacion
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatChipsModule} from '@angular/material/chips';
+
 @NgModule({
   declarations: [],
   exports: [
@@ -33,7 +35,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatTableModule,
     DragDropModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule
   ],
   imports: [
     CommonModule
