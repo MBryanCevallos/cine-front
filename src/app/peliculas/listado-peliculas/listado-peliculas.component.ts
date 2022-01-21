@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+
 import { PeliculaDTO } from '../pelicula';
+import { PeliculasService } from '../peliculas.service';
 
 @Component({
   selector: 'app-listado-peliculas',
@@ -8,9 +11,12 @@ import { PeliculaDTO } from '../pelicula';
 })
 export class ListadoPeliculasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pelicuasService: PeliculasService) { }
   @Input()
   peliculas: PeliculaDTO[];
+
+  @Output()
+  borrado: EventEmitter<void> = new EventEmitter<void>();
   ngOnInit(): void {
    /* this.pelis =[{
       titulo: 'Spider-Man- from home / cine',
@@ -42,7 +48,7 @@ export class ListadoPeliculasComponent implements OnInit {
     precio: 300.99
   }];
 */
-remover(indicePelicula: number): void{
-  this.peliculas.splice(indicePelicula, 1);
+borrar(peliculaId: number): void{
+  this.pelicuasService.borrar(peliculaId).subscribe(() => this.borrado.emit());
 }
 }

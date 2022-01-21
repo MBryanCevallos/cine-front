@@ -41,8 +41,11 @@ import { FormularioPeliculaComponent } from './peliculas/formulario-pelicula/for
 import { SelectorMultipleComponent } from './utilidades/selector-multiple/selector-multiple.component';
 import { AutocompleteActoresComponent } from './actores/autocomplete-actores/autocomplete-actores.component';
 import { MostrarErroresComponent } from './utilidades/mostrar-errores/mostrar-errores.component';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-pelicula.component';  // para ventanas emergentes
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'; // para ventanas emergentes
+import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-pelicula.component';
+import { AutorizadoComponent } from './seguridad/autorizado/autorizado.component';
+import { LoginComponent } from './seguridad/login/login.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +76,9 @@ import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-p
     SelectorMultipleComponent,
     AutocompleteActoresComponent,
     MostrarErroresComponent,
-    DetallePeliculaComponent
+    DetallePeliculaComponent,
+    AutorizadoComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

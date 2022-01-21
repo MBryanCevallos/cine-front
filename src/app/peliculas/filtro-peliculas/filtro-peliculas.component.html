@@ -1,5 +1,7 @@
 <h2>Buscar Películas</h2>
-<form [formGroup]="form"> <!--3 usar formgroup-->
+<mat-spinner *ngIf="!peliculas"></mat-spinner>
+
+<form [formGroup]="form" *ngIf="peliculas"> <!--3 usar formgroup-->
     <mat-form-field appearance="outline"> <!--5 a contruir el formulario-->
         <mat-label>Título</mat-label>
         <input formControlName="titulo" matInput/>
@@ -10,6 +12,7 @@
         <mat-select formControlName="generoId"> <!-- 6 para usar se tuvo que importar en material -->
             <!--<mat-option [value]="'1'">Drama</mat-option>
             <mat-option [value]="'1'">Comedia</mat-option>    SE VAN A CARCAR LA FORMA COMENTADA SE LO HACE ESTATICAMENTE-->
+            <mat-option [value]="0">--Seleccione un género--</mat-option>
             <mat-option *ngFor="let genero of generos" [value]="genero.id">  <!--8 llamar datos del combo-->
                 {{genero.nombre}}
             </mat-option>
@@ -31,3 +34,10 @@
 </form>
 
 <app-listado-peliculas [peliculas]="peliculas"></app-listado-peliculas> <!--11 llamamos el listado-->
+
+<mat-paginator
+[length]="cantidadElementos"
+[pageSize]="cantidadElementosAMostrar"
+[pageSizeOptions] ="[5, 10, 20]"
+(page)="paginatorUpdate($event)">
+</mat-paginator>
