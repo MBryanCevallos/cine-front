@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { LeafletModule } from '@asymmetrik/ngx-leaflet'
 import { AppRoutingModule } from './app-routing.module';
@@ -41,8 +41,27 @@ import { FormularioPeliculaComponent } from './peliculas/formulario-pelicula/for
 import { SelectorMultipleComponent } from './utilidades/selector-multiple/selector-multiple.component';
 import { AutocompleteActoresComponent } from './actores/autocomplete-actores/autocomplete-actores.component';
 import { MostrarErroresComponent } from './utilidades/mostrar-errores/mostrar-errores.component';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-pelicula.component';  // para ventanas emergentes
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'; // para ventanas emergentes
+import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-pelicula.component';
+import { AutorizadoComponent } from './seguridad/autorizado/autorizado.component';
+import { LoginComponent } from './seguridad/login/login.component';
+import { RegistroComponent } from './seguridad/registro/registro.component';
+import { FormularioAutenticacionComponent } from './seguridad/formulario-autenticacion/formulario-autenticacion.component';
+import { SeguridadInterceptorService } from './seguridad/seguridad-interceptor.service';
+import { IndiceUsuariosComponent } from './seguridad/indice-usuarios/indice-usuarios.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +92,14 @@ import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-p
     SelectorMultipleComponent,
     AutocompleteActoresComponent,
     MostrarErroresComponent,
-    DetallePeliculaComponent
+    DetallePeliculaComponent,
+    AutorizadoComponent,
+    LoginComponent,
+    RegistroComponent,
+    FormularioAutenticacionComponent,
+    IndiceUsuariosComponent,
+    SidebarComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,9 +111,23 @@ import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-p
     LeafletModule,
     MarkdownModule.forRoot(), // markdown
     HttpClientModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatDividerModule
     ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: SeguridadInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

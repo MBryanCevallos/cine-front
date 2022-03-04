@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { actorCreacionDTO, actorDTO } from '../actor';
- 
+
 @Component({
   selector: 'app-formulario-actores',
   templateUrl: './formulario-actores.component.html',
@@ -35,7 +35,7 @@ export class FormularioActoresComponent implements OnInit {
     });
 
     if (this.modelo !== undefined) {
-      this.form.patchValue(this.modelo)
+      this.form.patchValue(this.modelo);
     }
   }
   archivoSeleccionado(file) {

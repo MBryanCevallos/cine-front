@@ -6,6 +6,7 @@ import { IndiceActoresComponent } from './actores/indice-actores/indice-actores.
 import { CrearCineComponent } from './cines/crear-cine/crear-cine.component';
 import { EditarCineComponent } from './cines/editar-cine/editar-cine.component';
 import { IndiceCinesComponent } from './cines/indice-cines/indice-cines.component';
+import { EsAdminGuard } from './es-admin.guard';
 import { CrearGeneroComponent } from './generos/crear-genero/crear-genero.component';
 import { EditarGeneroComponent } from './generos/editar-genero/editar-genero.component';
 import { IndiceGenerosComponent } from './generos/indice-generos/indice-generos.component';
@@ -14,22 +15,28 @@ import { CrearPeliculaComponent } from './peliculas/crear-pelicula/crear-pelicul
 import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-pelicula.component';
 import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
 import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-peliculas.component';
+import { IndiceUsuariosComponent } from './seguridad/indice-usuarios/indice-usuarios.component';
+import { LoginComponent } from './seguridad/login/login.component';
+import { RegistroComponent } from './seguridad/registro/registro.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
-  {path: 'generos', component: IndiceGenerosComponent},
-  {path: 'generos/crear', component: CrearGeneroComponent},
-  {path: 'generos/editar/:id', component: EditarGeneroComponent}, // /:id es para enviar el parametro
-  {path: 'actores', component: IndiceActoresComponent},
-  {path: 'actores/crear', component: CrearActorComponent},
-  {path: 'actores/editar/:id', component: EditarActorComponent}, // /:id es para enviar el parametro
-  {path: 'cines', component: IndiceCinesComponent},
-  {path: 'cines/crear', component: CrearCineComponent},
-  {path: 'cines/editar/:id', component: EditarCineComponent}, // /:id es para enviar el parametro
-  {path: 'peliculas/crear', component: CrearPeliculaComponent},
-  {path: 'peliculas/editar/:id', component: EditarPeliculaComponent}, // /:id es para enviar el parametro
+  {path: 'generos', component: IndiceGenerosComponent, canActivate: [EsAdminGuard]},
+  {path: 'generos/crear', component: CrearGeneroComponent, canActivate: [EsAdminGuard] },
+  {path: 'generos/editar/:id', component: EditarGeneroComponent, canActivate: [EsAdminGuard]}, // /:id es para enviar el parametro
+  {path: 'actores', component: IndiceActoresComponent, canActivate: [EsAdminGuard]},
+  {path: 'actores/crear', component: CrearActorComponent, canActivate: [EsAdminGuard]},
+  {path: 'actores/editar/:id', component: EditarActorComponent, canActivate: [EsAdminGuard]}, // /:id es para enviar el parametro
+  {path: 'cines', component: IndiceCinesComponent, canActivate: [EsAdminGuard]},
+  {path: 'cines/crear', component: CrearCineComponent, canActivate: [EsAdminGuard]},
+  {path: 'cines/editar/:id', component: EditarCineComponent, canActivate: [EsAdminGuard]}, // /:id es para enviar el parametro
+  {path: 'peliculas/crear', component: CrearPeliculaComponent, canActivate: [EsAdminGuard]},
+  {path: 'peliculas/editar/:id', component: EditarPeliculaComponent, canActivate: [EsAdminGuard]}, // /:id es para enviar el parametro
   {path: 'peliculas/buscar', component: FiltroPeliculasComponent},
   {path: 'pelicula/:id', component: DetallePeliculaComponent},
+  {path: 'login', component: LoginComponent}, // login
+  {path: 'registro', component: RegistroComponent}, // Registro
+  {path: 'usuarios', component: IndiceUsuariosComponent, canActivate: [EsAdminGuard]}, // Usuarios
   {path: '**', redirectTo: ''}
 ];
 
