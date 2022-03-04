@@ -4,7 +4,18 @@ mat-toolbar {
     top: 0;
     z-index: 1000;
 }
-
+.fondo-menu{
+    background: #004a9f;
+}
 app-autorizado{
     display: flex;
+}
+.tamaño{
+    font-size: 2rem;
+    font-style: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.espacio {
+    flex: 1 1 auto;
 }

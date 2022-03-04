@@ -1,0 +1,68 @@
+<mat-toolbar class="mat-elevation-z8">
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">
+          menu
+      </mat-icon>
+      <mat-icon *ngIf="sidenav.opened">
+          close
+      </mat-icon>
+  </button>
+ 
+  <app-menu></app-menu>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <app-autorizado>
+        <ng-container autorizado>
+            <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
+            <h5 class="name"> Bienvenido
+            <span>{{seguridadService.obtenerCampoJWT('email')}} </span></h5>
+            <p class="designation"> Rol Administrador</p>
+            <a mat-button (click)="seguridadService.logout()">Salir</a>
+        </ng-container>
+
+        <ng-container noAutorizado>  
+            <p><span> <mat-icon class="icon-display">account_circle</mat-icon></span></p>
+            <div><span>Iniciar sesión</span> </div>      
+            <a mat-button routerLink="login">Ingresar</a>
+            <a mat-button routerLink="registro">Registro</a>
+        </ng-container>
+      </app-autorizado>
+
+      <mat-divider></mat-divider>
+
+      <button mat-button class="menu-button">
+          <mat-icon>home</mat-icon>
+          <span>Inicio</span>
+      </button>
+      <button mat-button class="menu-button">
+          <mat-icon>person</mat-icon>
+          <span>Perfil</span>
+      </button>
+      <button mat-button class="menu-button">
+          <mat-icon>info</mat-icon>
+          <span>Información</span>
+      </button>
+      
+
+      <mat-divider></mat-divider>
+
+      <button mat-button class="menu-button">
+          <mat-icon>help</mat-icon>
+          <span>Ayuda</span>
+      </button>
+      <mat-divider></mat-divider>
+    
+     
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+     <div class="content mat-elevation-z8">
+       <div style="margin: 1rem;">
+      <router-outlet></router-outlet>
+       </div>        
+      </div>
+     <!-- </div>-->
+  </mat-sidenav-content>
+</mat-sidenav-container>
